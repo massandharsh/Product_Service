@@ -1,0 +1,33 @@
+#Third party api config
+fakeStore:
+  api:
+    url: "https://fakestoreapi.com"
+    paths:
+      products: "/products"
+
+#Server config
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+
+#Spring JPA config
+
+spring:
+  flyway:
+      enabled: true
+      locations: classpath:db/migration
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/sep23productservice
+    username: "sep23productservice"
+    password: "root"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+
