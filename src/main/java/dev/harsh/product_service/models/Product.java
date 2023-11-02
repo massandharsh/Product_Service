@@ -22,4 +22,6 @@ public class Product extends BaseModel{
     private Category category;
     @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.LAZY)
     private Price price;
+
+    private Integer inventoryCount;
 }
