@@ -21,12 +21,13 @@ CREATE TABLE price
 
 CREATE TABLE product
 (
-    id            BINARY(16) NOT NULL,
-    title         VARCHAR(255) NULL,
-    `description` VARCHAR(255) NULL,
-    image         VARCHAR(255) NULL,
-    category      BINARY(16) NULL,
-    price_id      BINARY(16) NULL,
+    id              BINARY(16) NOT NULL,
+    title           VARCHAR(255) NULL,
+    `description`   VARCHAR(255) NULL,
+    image           VARCHAR(255) NULL,
+    category_id       BINARY(16) NULL,
+    price_id        BINARY(16) NULL,
+    inventory_count INT NULL,
     CONSTRAINT pk_product PRIMARY KEY (id)
 );
 
@@ -37,7 +38,7 @@ CREATE TABLE product_orders
 );
 
 ALTER TABLE product
-    ADD CONSTRAINT FK_PRODUCT_ON_CATEGORY FOREIGN KEY (category) REFERENCES category (id);
+    ADD CONSTRAINT FK_PRODUCT_ON_CATEGORY FOREIGN KEY (category_id) REFERENCES category (id);
 
 ALTER TABLE product
     ADD CONSTRAINT FK_PRODUCT_ON_PRICE FOREIGN KEY (price_id) REFERENCES price (id);

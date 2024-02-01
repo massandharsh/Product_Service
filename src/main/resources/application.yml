@@ -7,7 +7,7 @@ fakeStore:
 
 #Server config
 server:
-  port: 8080
+  port: 3000
   error:
     include-stacktrace: never
 
@@ -15,22 +15,39 @@ server:
 
 spring:
   flyway:
-      enabled: true
-      locations: classpath:db/migration
+    enabled: true
+    locations: classpath:db/migration
 
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
   datasource:
-    url: jdbc:mariadb://localhost:3306/sep23productservice
-    username: root
-    driver-class-name: org.mariadb.jdbc.Driver
-
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
       mode: always
 
+  #Security
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${ISSUER_URL}
+
+  logging:
+    level:
+      org.springframework.security: trace
+      root: debug
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+
+opensearch:
+  uris: {AWS_OPENSEARCH_URI}
+  username: {AWS_OPENSEARCH_USERNAME}
+  password: {AES_OPENSEARCH_PASSWORD}

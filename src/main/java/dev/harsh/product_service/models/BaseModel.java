@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.id.factory.spi.GenerationTypeStrategy;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @MappedSuperclass
@@ -15,8 +16,9 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class BaseModel{
+public abstract class BaseModel implements Serializable {
     @Id
+    @org.springframework.data.annotation.Id
     @GeneratedValue(generator = "uuidGenerator")
     @GenericGenerator(name = "uuidGenerator",strategy="uuid2")
     @Column(name="id",columnDefinition = "binary(16)",nullable = false,updatable = false)

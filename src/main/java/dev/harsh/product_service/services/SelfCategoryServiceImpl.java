@@ -9,6 +9,7 @@ import dev.harsh.product_service.repositories.CategoryRepository;
 import dev.harsh.product_service.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

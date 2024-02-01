@@ -2,6 +2,7 @@ package dev.harsh.product_service.thirdpartyclient.fakestore;
 
 import dev.harsh.product_service.dtos.GenericProductDto;
 import dev.harsh.product_service.exceptions.NotFoundException;
+import lombok.Getter;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import java.util.Objects;
  * */
 
 @Service("fakeStoreThirdParty")
+@Getter
 public class FakeStoreThirdParty implements InitializingBean {
     private final RestTemplateBuilder restTemplateBuilder;
 
